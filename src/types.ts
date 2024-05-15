@@ -28,6 +28,12 @@ export interface SelectBoxInterface {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
+export interface MetricOptionsInterface {
+  id: string;
+  label: string;
+  color: string;
+}
+
 export interface ChartConfigInterface {
   responsive: boolean;
   maintainAspectRatio: boolean;

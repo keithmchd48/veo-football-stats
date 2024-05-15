@@ -13,3 +13,4 @@ The app should then run locally on port 3006 - [http://localhost:3006/](http://l
 - [Chart.js](https://www.chartjs.org/)
 - [react-chartjs-2](https://react-chartjs-2.js.org/)
 - [tailwindcss](https://tailwindcss.com/)
+- [multiselect-react-dropdown](https://www.npmjs.com/package/multiselect-react-dropdown)

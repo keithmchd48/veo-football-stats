@@ -1,13 +1,13 @@
-import {SportsDataInterface, OptionsInterface, CHART_TYPES} from 'types';
+import {SportsDataInterface, OptionsInterface, MetricOptionsInterface, CHART_TYPES} from 'types';
 
-export const metrics: OptionsInterface[] = [
-  { value: 'attacks', label: 'Attacks' },
-  { value: 'defense', label: 'Defense' },
-  { value: 'conceded', label: 'Conceded' },
-  { value: 'scored', label: 'Scored' },
-  { value: 'corners', label: 'Corners' },
-  { value: 'freeKicks', label: 'Free Kicks' },
-  { value: 'possession', label: 'Possession' },
+export const metrics: MetricOptionsInterface[] = [
+  { id: 'attacks', label: 'Attacks', color: 'black'},
+  { id: 'defense', label: 'Defense', color: 'blue'},
+  { id: 'conceded', label: 'Conceded', color: 'red'},
+  { id: 'scored', label: 'Scored', color: 'green'},
+  { id: 'corners', label: 'Corners', color: 'yellow'},
+  { id: 'freeKicks', label: 'Free Kicks', color: 'purple'},
+  { id: 'possession', label: 'Possession', color: 'orange'},
 ];
 
 

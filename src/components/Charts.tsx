@@ -1,5 +1,5 @@
 import { Line, Radar, Bar } from 'react-chartjs-2';
-import {ChartConfigInterface, OptionsInterface, CHART_TYPES} from 'types';
+import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, CHART_TYPES} from 'types';
 import {stats} from 'data/constants';
 import moment from 'moment';
 
@@ -45,25 +45,75 @@ const DEFAULT_CONFIG: ChartConfigInterface = {
     },
 };
 
-const Charts = ({ metricType, chartType }: { metricType: OptionsInterface; chartType: OptionsInterface; }) => {
-  const dataMap = new Map();
-  stats.forEach((stat) => {
-    const date: string = moment(stat.date, "YYYY-MM-DD").format('MMM DD YY');
-    const metric: number | string = stat[metricType.value as keyof typeof stat];
-    dataMap.set(date, metric);
+interface ChartSetInterface {
+  label: string;
+  data: number[];
+  borderColor: string;
+  borderWidth: number;
+  tension: number;
+  backgroundColor?: string;
+}
+
+const Charts = ({ metrics, chartType }: { metrics: MetricOptionsInterface[]; chartType: OptionsInterface; }) => {
+  const attacksData: number[] = stats.map((stat) => stat.attacks);
+  const defenseData: number[] = stats.map((stat) => stat.defense);
+  const concededData: number[] = stats.map((stat) => stat.conceded);
+  const scoredData: number[] = stats.map((stat) => stat.scored);
+  const cornersData: number[] = stats.map((stat) => stat.corners);
+  const freeKicksData: number[] = stats.map((stat) => stat.freeKicks);
+  const possessionData: number[] = stats.map((stat) => stat.possession);
+  const dates: string[] = stats.map((stat) => moment(stat.date).format('MMM DD YY'));
+
+  const dataSets: ChartSetInterface[] = metrics.map((metric) => {
+    let data: number[] = [];
+    
+    switch (metric.id) {
+      case 'attacks':
+        data = attacksData;
+        break;
+      case 'defense':
+        data = defenseData;
+        break;
+      case 'conceded':
+        data = concededData;
+        break;
+      case 'scored':
+        data = scoredData;
+        break;
+      case 'corners':
+        data = cornersData;
+        break;
+      case 'freeKicks':
+        data = freeKicksData;
+        break;
+      case 'possession':
+        data = possessionData;
+        break;
+      default:
+        data = [];
+    }
+
+    const returnObject: ChartSetInterface = {
+      label: metric.label,
+      data,
+      borderColor: metric.color,
+      borderWidth: 2,
+      tension: 0.1,
+    };
+
+    if (chartType.value === CHART_TYPES.RADIAL) {
+      return returnObject;
+    } else {
+      return {
+        ...returnObject,
+        backgroundColor: metric.color,
+      };
+    }
   });
 
-  const chartData = {
-    labels: Array.from(dataMap.keys()),
-    datasets: [
-      {
-        label: `${metricType.label}`,
-        data: Array.from(dataMap.values()),
-        borderColor: '#FF5A00',
-        // backgroundColor: '#FF5A00',
-        tension: 0.1,
-      }
-    ],
+  const chartData: {labels: string[]; datasets: ChartSetInterface[]} = {
+    labels: dates,
+    datasets: dataSets,
   };
 
   return (
