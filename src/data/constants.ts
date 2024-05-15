@@ -1,4 +1,5 @@
 import moment from 'moment';
+import {brandOrange, brandGray, brandWhite} from './../../tailwind.config';
 
 import {
   SportsDataInterface,
@@ -135,3 +136,30 @@ export const cornersData: number[] = stats.map((stat) => stat.corners);
 export const freeKicksData: number[] = stats.map((stat) => stat.freeKicks);
 export const possessionData: number[] = stats.map((stat) => stat.possession);
 export const dates: string[] = stats.map((stat) => moment(stat.date).format('MMM DD YY'));
+
+
+export const multiselectStyles = {
+  chips: {
+    background: brandOrange,
+    color: brandWhite,
+    border: '1px solid',
+    borderColor: brandOrange,
+    borderRadius: '5px',
+    marginBottom: '0',
+  },
+  searchBox: {
+    fontSize: '14px',
+    border: '1px solid',
+    borderColor: brandOrange,
+    borderRadius: '5px',
+  },
+  optionContainer: {
+    border: '1px solid',
+    borderColor: brandOrange,
+    borderRadius: '5px',
+    backgroundColor: brandGray,
+  },
+  option: {
+    color: brandOrange,
+  },
+};

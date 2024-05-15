@@ -7,7 +7,7 @@ import {useState} from 'react';
 import React from 'react';
 import {OptionsInterface, MetricOptionsInterface} from 'types';
 import Multiselect from 'multiselect-react-dropdown';
-import {brandOrange, brandGray, brandWhite} from './../tailwind.config';
+import {multiselectStyles} from 'data/constants';
 
 
 const DEFAULT_METRIC = metrics[0];
@@ -29,33 +29,6 @@ function App() {
     const chart: OptionsInterface = charts.find((c) => c.value === value) || DEFAULT_CHART;
     setSelectedChart(chart);
   };
-
-  const multiselectStyles = {
-    chips: {
-      background: brandOrange,
-      color: brandWhite,
-      border: '1px solid',
-      borderColor: brandOrange,
-      borderRadius: '5px',
-      marginBottom: '0',
-    },
-    searchBox: {
-      fontSize: '14px',
-      border: '1px solid',
-      borderColor: brandOrange,
-      borderRadius: '5px',
-    },
-    optionContainer: {
-      border: '1px solid',
-      borderColor: brandOrange,
-      borderRadius: '5px',
-      backgroundColor: brandGray,
-    },
-    option: {
-      color: brandOrange,
-    },
-  };
-  
 
   return (
     <MainLayout>
