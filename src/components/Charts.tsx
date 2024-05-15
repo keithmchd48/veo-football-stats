@@ -1,7 +1,16 @@
 import { Line, Radar, Bar } from 'react-chartjs-2';
 import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, CHART_TYPES} from 'types';
-import {stats} from 'data/constants';
-import moment from 'moment';
+import {
+  attacksData,
+  defenseData,
+  concededData,
+  scoredData,
+  cornersData,
+  freeKicksData,
+  dates,
+  possessionData,
+} from 'data/constants';
+
 
 import {
   Chart as ChartJS,
@@ -55,39 +64,28 @@ interface ChartSetInterface {
 }
 
 const Charts = ({ metrics, chartType }: { metrics: MetricOptionsInterface[]; chartType: OptionsInterface; }) => {
-  const attacksData: number[] = stats.map((stat) => stat.attacks);
-  const defenseData: number[] = stats.map((stat) => stat.defense);
-  const concededData: number[] = stats.map((stat) => stat.conceded);
-  const scoredData: number[] = stats.map((stat) => stat.scored);
-  const cornersData: number[] = stats.map((stat) => stat.corners);
-  const freeKicksData: number[] = stats.map((stat) => stat.freeKicks);
-  const possessionData: number[] = stats.map((stat) => stat.possession);
-  const dates: string[] = stats.map((stat) => moment(stat.date).format('MMM DD YY'));
-
   const dataSets: ChartSetInterface[] = metrics.map((metric) => {
     let data: number[] = [];
     
+    const metricDataLookup: Record<string, number[]> = {
+      attacks: attacksData,
+      defense: defenseData,
+      conceded: concededData,
+      scored: scoredData,
+      corners: cornersData,
+      freeKicks: freeKicksData,
+      possession: possessionData,
+    };
+
     switch (metric.id) {
       case 'attacks':
-        data = attacksData;
-        break;
       case 'defense':
-        data = defenseData;
-        break;
       case 'conceded':
-        data = concededData;
-        break;
       case 'scored':
-        data = scoredData;
-        break;
       case 'corners':
-        data = cornersData;
-        break;
       case 'freeKicks':
-        data = freeKicksData;
-        break;
       case 'possession':
-        data = possessionData;
+        data = metricDataLookup[metric.id];
         break;
       default:
         data = [];

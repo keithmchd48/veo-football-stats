@@ -60,7 +60,12 @@ function App() {
   return (
     <MainLayout>
     {/* Select Boxes */}
-    <div className="flex justify-between items-center flex-wrap-reverse gap-5 p-4">
+    <div className="flex justify-between items-center flex-wrap gap-5 p-4">
+      <SelectBox
+        options={charts}
+        value={selectedChart.value}
+        onChange={handleChartChange} />
+
       <Multiselect
         options={metrics}
         selectedValues={selectedMetrics}
@@ -71,11 +76,6 @@ function App() {
         closeOnSelect={false}
         style={multiselectStyles}
         />
-
-      <SelectBox
-        options={charts}
-        value={selectedChart.value}
-        onChange={handleChartChange} />
       </div>
       {/* Charts */}
       <div className="xs:h-[100%] xs:w-[97%] sm:h-[70%] sm:w-[70%] border-2 border-brand-black px-4 py-2 rounded-lg my-0 mx-auto">

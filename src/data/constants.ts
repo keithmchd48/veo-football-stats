@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import {
   SportsDataInterface,
   OptionsInterface,
@@ -124,3 +126,12 @@ export const stats: SportsDataInterface[] = [
     "possession": 60
   }
 ];
+
+export const attacksData: number[] = stats.map((stat) => stat.attacks);
+export const defenseData: number[] = stats.map((stat) => stat.defense);
+export const concededData: number[] = stats.map((stat) => stat.conceded);
+export const scoredData: number[] = stats.map((stat) => stat.scored);
+export const cornersData: number[] = stats.map((stat) => stat.corners);
+export const freeKicksData: number[] = stats.map((stat) => stat.freeKicks);
+export const possessionData: number[] = stats.map((stat) => stat.possession);
+export const dates: string[] = stats.map((stat) => moment(stat.date).format('MMM DD YY'));
