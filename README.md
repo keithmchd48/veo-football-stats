@@ -1,4 +1,5 @@
-Built using Vite, React, Typescript
+Built using Vite, React, Typescript.
+Deployed via Netlify - [Live!](https://statsifying.netlify.app/)
 
 ### Setup
 Clone the repo and run the following commands to get the app running:

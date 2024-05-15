@@ -6,6 +6,16 @@ export const enum CHART_TYPES {
   RADIAL = 'radial',
 }
 
+export const enum METRICS {
+  ATTACKS = 'attacks',
+  DEFENSE = 'defense',
+  CONCEDED = 'conceded',
+  SCORED = 'scored',
+  CORNERS = 'corners',
+  FREEKICKS = 'freeKicks',
+  POSSESSION = 'possession'
+}
+
 export interface SportsDataInterface {
   date: string;
   attacks: number;
