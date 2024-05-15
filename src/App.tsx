@@ -17,14 +17,11 @@ function App() {
   const [selectedMetrics, setSelectedMetrics] = useState<MetricOptionsInterface[]>([DEFAULT_METRIC]);
   const [selectedChart, setSelectedChart] = useState<OptionsInterface>(DEFAULT_CHART);
 
-  const onSelectMetric = (selectedList: MetricOptionsInterface[]) => {
-    setSelectedMetrics(selectedList);
-  };
-  const onRemoveMetric = (selectedList: MetricOptionsInterface[]) => {
+  const onMetricChange = (selectedList: MetricOptionsInterface[]) => {
     setSelectedMetrics(selectedList);
   };
 
-  const handleChartChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const onChartChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value: string = e.target.value;
     const chart: OptionsInterface = charts.find((c) => c.value === value) || DEFAULT_CHART;
     setSelectedChart(chart);
@@ -37,13 +34,13 @@ function App() {
       <SelectBox
         options={charts}
         value={selectedChart.value}
-        onChange={handleChartChange} />
+        onChange={onChartChange} />
 
       <Multiselect
         options={metrics}
         selectedValues={selectedMetrics}
-        onSelect={onSelectMetric}
-        onRemove={onRemoveMetric}
+        onSelect={onMetricChange}
+        onRemove={onMetricChange}
         displayValue="label"
         placeholder=""
         closeOnSelect={false}
