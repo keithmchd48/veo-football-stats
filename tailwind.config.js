@@ -3,6 +3,13 @@ export default {
   content: ["src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          black: "#000",
+          orange: "#FF5A00",
+          gray: "#e5e7eb"
+        },
+      },
       screens: {
         xs: "0px",
         s: "320px",

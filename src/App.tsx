@@ -30,10 +30,10 @@ function App() {
 
   return (
     <>
-    <div className="my-0 mx-auto">
+    <div className="my-0 mx-auto bg-brand-gray">
       <div className="w-full h-screen">
         <div className="flex flex-col items-center justify-center h-full">
-          <h3 className="text-2xl font-bold text-center text-blue-500 p-4">Football Stats</h3>
+          <h3 className="text-2xl font-bold text-center text-brand-orange p-4">Football Stats</h3>
           {/* Select Boxes */}
           <div className="flex justify-between items-center gap-5 p-4">
             <SelectBox
@@ -47,7 +47,7 @@ function App() {
               onChange={handleChartChange} />
           </div>
           {/* Charts */}
-          <div className="xs:h-[100%] xs:w-[100%] sm:h-[70%] sm:w-[70%] border-2 border-blue-300 px-4">
+          <div className="xs:h-[100%] xs:w-[100%] sm:h-[70%] sm:w-[70%] border-2 border-brand-black px-4">
             <Charts metricType={selectedMetric} chartType={selectedChart} />
           </div>
         </div>

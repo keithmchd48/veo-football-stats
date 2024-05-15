@@ -6,12 +6,15 @@ import moment from 'moment';
 import {
   Chart as ChartJS,
   CategoryScale,
+  RadialLinearScale,
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
+  Filler
 } from 'chart.js';
 
 ChartJS.register(
@@ -19,9 +22,12 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
+  RadialLinearScale,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 const DEFAULT_CONFIG: ChartConfigInterface = {
@@ -47,16 +53,14 @@ const Charts = ({ metricType, chartType }: { metricType: OptionsInterface; chart
     dataMap.set(date, metric);
   });
 
-  console.log(dataMap);
-
   const chartData = {
     labels: Array.from(dataMap.keys()),
     datasets: [
       {
         label: `${metricType.label}`,
         data: Array.from(dataMap.values()),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#FF5A00',
+        // backgroundColor: '#FF5A00',
         tension: 0.1,
       }
     ],
@@ -64,8 +68,8 @@ const Charts = ({ metricType, chartType }: { metricType: OptionsInterface; chart
 
   return (
     <div className="w-full h-full">
-      {/* {chartType.value === CHART_TYPES.LINE && <Line data={chartData} options={DEFAULT_CONFIG} />} */}
-      {/* {chartType.value === CHART_TYPES.RADIAL && <Radar data={chartData} options={DEFAULT_CONFIG} />} */}
+      {chartType.value === CHART_TYPES.LINE && <Line data={chartData} options={DEFAULT_CONFIG} />}
+      {chartType.value === CHART_TYPES.RADIAL && <Radar data={chartData} options={DEFAULT_CONFIG} />}
       {chartType.value === CHART_TYPES.BAR && <Bar data={chartData} options={DEFAULT_CONFIG} />}
     </div>
   );
