@@ -20,9 +20,9 @@ export const metrics: MetricOptionsInterface[] = [
 ];
 
 export const charts: OptionsInterface[] = [
+  {value: CHART_TYPES.RADIAL, label: 'Radial'},
   {value: CHART_TYPES.LINE, label: 'Line'},
   {value: CHART_TYPES.BAR, label: 'Bar'},
-  {value: CHART_TYPES.RADIAL, label: 'Radial'}
 ];
 
 export const stats: SportsDataInterface[] = [
