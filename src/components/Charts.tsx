@@ -1,5 +1,5 @@
 import { Line, Radar, Bar } from 'react-chartjs-2';
-import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, CHART_TYPES} from 'types';
+import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, ChartSetInterface, CHART_TYPES} from 'types';
 import {
   attacksData,
   defenseData,
@@ -53,15 +53,6 @@ const DEFAULT_CONFIG: ChartConfigInterface = {
       },
     },
 };
-
-interface ChartSetInterface {
-  label: string;
-  data: number[];
-  borderColor: string;
-  borderWidth: number;
-  tension: number;
-  backgroundColor?: string;
-}
 
 const Charts = ({ metrics, chartType }: { metrics: MetricOptionsInterface[]; chartType: OptionsInterface; }) => {
   const dataSets: ChartSetInterface[] = metrics.map((metric) => {

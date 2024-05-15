@@ -44,6 +44,15 @@ export interface MetricOptionsInterface {
   color: string;
 }
 
+export interface ChartSetInterface {
+  label: string;
+  data: number[];
+  borderColor: string;
+  borderWidth: number;
+  tension: number;
+  backgroundColor?: string;
+}
+
 export interface ChartConfigInterface {
   responsive: boolean;
   maintainAspectRatio: boolean;
