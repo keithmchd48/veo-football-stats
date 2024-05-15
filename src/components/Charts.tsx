@@ -1,5 +1,5 @@
 import { Line, Radar, Bar } from 'react-chartjs-2';
-import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, ChartSetInterface, CHART_TYPES} from 'types';
+import {ChartConfigInterface, OptionsInterface, MetricOptionsInterface, ChartSetInterface, CHART_TYPES, METRICS} from 'types';
 import {
   attacksData,
   defenseData,
@@ -69,13 +69,13 @@ const Charts = ({ metrics, chartType }: { metrics: MetricOptionsInterface[]; cha
     };
 
     switch (metric.id) {
-      case 'attacks':
-      case 'defense':
-      case 'conceded':
-      case 'scored':
-      case 'corners':
-      case 'freeKicks':
-      case 'possession':
+      case METRICS.ATTACKS:
+      case METRICS.DEFENSE:
+      case METRICS.CONCEDED:
+      case METRICS.SCORED:
+      case METRICS.CORNERS:
+      case METRICS.FREEKICKS:
+      case METRICS.POSSESSION:
         data = metricDataLookup[metric.id];
         break;
       default:
